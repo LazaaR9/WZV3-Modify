@@ -386,7 +386,7 @@ class TaskListener(TaskConfig):
             f"<b><i>{escape(self.name)}</i></b>\n│"
             f"\n┟ <b>Task Size:</b> {get_readable_file_size(self.size)}"
             f"\n┠ <b>Time Taken:</b> {get_readable_time(time() - self.message.date.timestamp())}"
-            f"\n┖ <b>Mode:</b> {self.mode[0]}" | {self.mode[1]}"
+            f"\n┖ <b>Mode:</b> {self.mode[0]} | {self.mode[1]}"
         )
         LOGGER.info(f"Task Done: {self.name}")
         if self.is_yt:
