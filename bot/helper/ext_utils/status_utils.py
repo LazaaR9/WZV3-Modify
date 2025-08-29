@@ -15,7 +15,6 @@ from ... import (
 )
 from ...core.config_manager import Config
 from ..telegram_helper.button_build import ButtonMaker
-from ..telegram_helper.bot_commands import BotCommands
 
 SIZE_UNITS = ["B", "KB", "MB", "GB", "TB", "PB"]
 
@@ -274,6 +273,8 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
             msg += f"\n┠ <b>Sɪᴢᴇ:</b> <code>{task.size()}</code>"
         msg += f"\n┠ <b>Usᴇʀ:</b> {task.listener.message.from_user.first_name} | <code>{task.listener.message.from_user.id}</code>"
         # TODO: Add Bt Sel
+        from ..telegram_helper.bot_commands import BotCommands
+        
         msg += f"\n<b>┖ Sᴛᴏᴘ:</b> <i>/{BotCommands.CancelTaskCommand[1]}_{task.gid()}</i>\n\n"
 
     if len(msg) == 0:
