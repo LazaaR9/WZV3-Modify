@@ -27,30 +27,30 @@ from ..helper.telegram_helper.message_utils import (
 @new_task
 async def restart_bot(_, message):
     buttons = button_build.ButtonMaker()
-    buttons.data_button("Yes!", "botrestart confirm")
-    buttons.data_button("No!", "botrestart cancel")
+    buttons.data_button("Yᴇs ✅", "botrestart confirm")
+    buttons.data_button("Nᴏ ❌", "botrestart cancel")
     button = buttons.build_menu(2)
     await send_message(
-        message, "<i>Are you really sure you want to restart the bot ?</i>", button
+        message, "<i>Aʀᴇ Yᴏᴜ Rᴇᴀʟʟʏ Sᴜʀᴇ Yᴏᴜ Wᴀɴᴛ ᴛᴏ Rᴇsᴛᴀʀᴛ ᴛʜᴇ Bᴏᴛ ?</i>", button
     )
 
 
 @new_task
 async def restart_sessions(_, message):
     buttons = button_build.ButtonMaker()
-    buttons.data_button("Yes!", "sessionrestart confirm")
-    buttons.data_button("No!", "sessionrestart cancel")
+    buttons.data_button("Yᴇs ✅", "sessionrestart confirm")
+    buttons.data_button("Nᴏ ❌", "sessionrestart cancel")
     button = buttons.build_menu(2)
     await send_message(
         message,
-        "<i>Are you really sure you want to restart the session(s) ?!</>",
+        "<i>Aʀᴇ Yᴏᴜ Rᴇᴀʟʟʏ Sᴜʀᴇ Yᴏᴜ Wᴀɴᴛ ᴛᴏ Rᴇsᴛᴀʀᴛ ᴛʜᴇ Sᴇssɪᴏɴ(s) ?!</>",
         button,
     )
 
 
 async def send_incomplete_task_message(cid, msg_id, msg):
     try:
-        if msg.startswith("⌬ <b><i>Restarted Successfully!</i></b>"):
+        if msg.startswith("<b><i>Rᴇsᴛᴀʀᴛᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ ✅</i></b>"):
             await TgClient.bot.edit_message_text(
                 chat_id=cid,
                 message_id=msg_id,
@@ -81,11 +81,11 @@ async def restart_notification():
     if Config.INCOMPLETE_TASK_NOTIFIER and Config.DATABASE_URL:
         if notifier_dict := await database.get_incomplete_tasks():
             for cid, data in notifier_dict.items():
-                msg = f"""⌬ <b><i>{"Restarted Successfully!" if cid == chat_id else "Bot Restarted!"}</i></b>
-┟ <b>Date:</b> {now.strftime("%d/%m/%y")}
-┠ <b>Time:</b> {now.strftime("%I:%M:%S %p")}
-┠ <b>TimeZone:</b> Asia/Kolkata
-┖ <b>Version:</b> {get_version()}"""
+                msg = f"""<b><i>{"Rᴇsᴛᴀʀᴛᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ ✅" if cid == chat_id else "Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ! ✅"}</i></b>
+┟ <b>Dᴀᴛᴇ:</b> {now.strftime("%d/%m/%y")}
+┠ <b>Tɪᴍᴇ:</b> {now.strftime("%I:%M:%S %p")}
+┠ <b>TɪᴍᴇZᴏɴᴇ:</b> Asia/Kolkata
+┖ <b>Vᴇʀsɪᴏɴ:</b> {get_version()}"""
                 for tag, links in data.items():
                     msg += f"\n\n{tag}: "
                     for index, link in enumerate(links, start=1):
@@ -101,11 +101,11 @@ async def restart_notification():
             await TgClient.bot.edit_message_text(
                 chat_id=chat_id,
                 message_id=msg_id,
-                text=f"""⌬ <b><i>Restarted Successfully!</i></b>
-┟ <b>Date:</b> {now.strftime("%d/%m/%y")}
-┠ <b>Time:</b> {now.strftime("%I:%M:%S %p")}
-┠ <b>TimeZone:</b> Asia/Kolkata
-┖ <b>Version:</b> {get_version()}""",
+                text=f"""<b><i>Rᴇsᴛᴀʀᴛᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ ✅</i></b>
+┟ <b>Dᴀᴛᴇ:</b> {now.strftime("%d/%m/%y")}
+┠ <b>Tɪᴍᴇ:</b> {now.strftime("%I:%M:%S %p")}
+┠ <b>TɪᴍᴇZᴏɴᴇ:</b> Asia/Kolkata
+┖ <b>Vᴇʀsɪᴏɴ:</b> {get_version()}""",
             )
         except Exception as e:
             LOGGER.error(e)
@@ -121,7 +121,7 @@ async def confirm_restart(_, query):
     await delete_message(message)
     if data[1] == "confirm":
         intervals["stopAll"] = True
-        restart_message = await send_message(reply_to, "<i>Restarting...</i>")
+        restart_message = await send_message(reply_to, "<i>Rᴇsᴛᴀʀᴛɪɴɢ....♻️</i>")
         await delete_message(message)
         await TgClient.stop()
         if scheduler.running:
