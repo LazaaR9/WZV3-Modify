@@ -145,7 +145,7 @@ async def get_stats(event, key="home"):
 
 <b>🧬 REMARKS :</b> <code>{compare_versions(get_version(), official_v)}</code>
     """
-    elif key == "stpkgs":
+        
     elif key == "stpkgs":
         msg = f"""<b><u>PACKAGES STATISTICS 📚 :</u></b>
 
