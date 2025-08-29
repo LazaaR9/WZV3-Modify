@@ -92,7 +92,7 @@ class TgClient:
                 if cls.IS_PREMIUM_USER:
                     cls.MAX_SPLIT_SIZE = 4194304000
                 uname = cls.user.me.username or cls.user.me.first_name
-                LOGGER.info(f"WZ User : [{uname}] Started!")
+                LOGGER.info(f"WZ User : [@{uname}] Started!")
             except Exception as e:
                 LOGGER.error(f"Failed to start client from USER_SESSION_STRING. {e}")
                 cls.IS_PREMIUM_USER = False
