@@ -48,9 +48,9 @@ def _build_command_usage(help_dict, command_key):
     for i in range(1, len(cmd_pages) + 1):
         for name in cmd_pages[i]:
             buttons.data_button(name, f"help {command_key} {name}")
-        buttons.data_button("Prev", f"help pre {command_key} {i - 1}")
-        buttons.data_button("Next", f"help nex {command_key} {i + 1}")
-        buttons.data_button("Close", "help close", "footer")
+        buttons.data_button("Pʀᴇᴠ", f"help pre {command_key} {i - 1}")
+        buttons.data_button("Nᴇxᴛ", f"help nex {command_key} {i + 1}")
+        buttons.data_button("Cᴀɴᴄᴇʟ ❌", "help close", "footer")
         temp_store.append(buttons.build_menu(2))
     COMMAND_USAGE[command_key] = [help_dict["main"], *temp_store]
     buttons.reset()
@@ -101,14 +101,14 @@ def bt_selection_buttons(id_):
     pin = "".join([n for n in id_ if n.isdigit()][:4])
     buttons = ButtonMaker()
     if Config.WEB_PINCODE:
-        buttons.url_button("Select Files", f"{Config.BASE_URL}/app/files?gid={id_}")
-        buttons.data_button("Pincode", f"sel pin {gid} {pin}")
+        buttons.url_button("Sᴇʟᴇᴄᴛ Fɪʟᴇs", f"{Config.BASE_URL}/app/files?gid={id_}")
+        buttons.data_button("Pɪɴᴄᴏᴅᴇ", f"sel pin {gid} {pin}")
     else:
         buttons.url_button(
-            "Select Files", f"{Config.BASE_URL}/app/files?gid={id_}&pin={pin}"
+            "Sᴇʟᴇᴄᴛ Fɪʟᴇs", f"{Config.BASE_URL}/app/files?gid={id_}&pin={pin}"
         )
-    buttons.data_button("Done Selecting", f"sel done {gid} {id_}")
-    buttons.data_button("Cancel", f"sel cancel {gid}")
+    buttons.data_button("Dᴏɴᴇ ✅", f"sel done {gid} {id_}")
+    buttons.data_button("Cᴀɴᴄᴇʟ ❌", f"sel cancel {gid}")
     return buttons.build_menu(2)
 
 
