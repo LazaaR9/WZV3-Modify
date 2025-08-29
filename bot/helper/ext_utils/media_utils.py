@@ -543,7 +543,7 @@ class FFMpeg:
             elif ext == "mkv":
                 cmd[14:14] = ["-c:s", "ass"]
             elif ext == "avi":
-                cmd[14:14] = ["-c:s", "wmv_text"]
+                cmd[14:14] = ["-c:s", "mov_text"]
             else:
                 cmd[14:14] = ["-c:s", "copy"]
         else:
