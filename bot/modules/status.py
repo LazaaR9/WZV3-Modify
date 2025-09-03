@@ -42,13 +42,13 @@ async def task_status(_, message):
     if count == 0:
         currentTime = get_readable_time(time() - bot_start_time)
         free = get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)
-        msg = f"""〄 <b><i>Nᴏ Aᴄᴛɪᴠᴇ Dᴏᴡɴʟᴏᴀᴅs ! 🗑️</i></b>
-│
-┖ <b>NOTE</b> → <i>Each user can get status for his tasks by adding "me" or user_id like "1234xxx" after cmd: /{BotCommands.StatusCommand[0]} me or /{BotCommands.StatusCommand[1]} me</i>
-
-⧉ <b><u>Bᴏᴛ Sᴛᴀᴛs...</u></b>
-┟ <b>🖥️ Cᴘᴜ:</b> {cpu_percent()}% | <b>💿 F:</b> {free}
-┖ <b>🎮 Rᴀᴍ:</b> {virtual_memory().percent}% | <b>🚀Uᴘ:</b> {currentTime}
+        msg = f"""<b><i>Nᴏ Aᴄᴛɪᴠᴇ Dᴏᴡɴʟᴏᴀᴅs ! 🗑️</i></b>
+        
+〄 <b><u>Bᴏᴛ Sᴛᴀᴛs...</u></b>
+╭ <b>🖥️ Cᴘᴜ:</b> {cpu_percent()}%
+┊ <b>🎮 Rᴀᴍ:</b> {virtual_memory().percent}%
+┊ <b>💿 Free:</b> {free}
+╰ <b>🚀UᴘTɪᴍᴇ:</b> {currentTime}
 """
         reply_message = await send_message(message, msg)
         await auto_delete_message(message, reply_message)
