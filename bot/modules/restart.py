@@ -82,10 +82,10 @@ async def restart_notification():
         if notifier_dict := await database.get_incomplete_tasks():
             for cid, data in notifier_dict.items():
                 msg = f"""<b><i>{"Rᴇsᴛᴀʀᴛᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ ✅" if cid == chat_id else "Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ! ✅"}</i></b>
-┟ <b>Dᴀᴛᴇ:</b> {now.strftime("%d/%m/%y")}
-┠ <b>Tɪᴍᴇ:</b> {now.strftime("%I:%M:%S %p")}
-┠ <b>TɪᴍᴇZᴏɴᴇ:</b> Asia/Kolkata
-┖ <b>Vᴇʀsɪᴏɴ:</b> {get_version()}"""
+╭ <b>Dᴀᴛᴇ:</b> {now.strftime("%d/%m/%y")}
+┊ <b>Tɪᴍᴇ:</b> {now.strftime("%I:%M:%S %p")}
+┊ <b>TɪᴍᴇZᴏɴᴇ:</b> Asia/Kolkata
+╰ <b>Vᴇʀsɪᴏɴ:</b> {get_version()}"""
                 for tag, links in data.items():
                     msg += f"\n\n{tag}: "
                     for index, link in enumerate(links, start=1):
@@ -102,10 +102,10 @@ async def restart_notification():
                 chat_id=chat_id,
                 message_id=msg_id,
                 text=f"""<b><i>Rᴇsᴛᴀʀᴛᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ ✅</i></b>
-┟ <b>Dᴀᴛᴇ:</b> {now.strftime("%d/%m/%y")}
-┠ <b>Tɪᴍᴇ:</b> {now.strftime("%I:%M:%S %p")}
-┠ <b>TɪᴍᴇZᴏɴᴇ:</b> Asia/Kolkata
-┖ <b>Vᴇʀsɪᴏɴ:</b> {get_version()}""",
+╭ <b>Dᴀᴛᴇ:</b> {now.strftime("%d/%m/%y")}
+┊ <b>Tɪᴍᴇ:</b> {now.strftime("%I:%M:%S %p")}
+┊ <b>TɪᴍᴇZᴏɴᴇ:</b> Asia/Kolkata
+╰ <b>Vᴇʀsɪᴏɴ:</b> {get_version()}""",
             )
         except Exception as e:
             LOGGER.error(e)
