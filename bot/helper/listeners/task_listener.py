@@ -383,7 +383,7 @@ class TaskListener(TaskConfig):
         ):
             await database.rm_complete_task(self.message.link)
         msg = (
-            f"<b><i>{escape(self.name)}</i></b>\n│"
+            f"<b><i>{escape(self.name)}</i></b>"
             f"\n╭ <b>Task Size:</b> {get_readable_file_size(self.size)}"
             f"\n┊ <b>Time Taken:</b> {get_readable_time(time() - self.message.date.timestamp())}"
             f"\n┊ <b>Mode:</b> {self.mode[0]} | {self.mode[1]}"
@@ -431,7 +431,7 @@ class TaskListener(TaskConfig):
                 await send_message(self.message, msg)
             else:
                 log_chat = self.user_id if self.bot_pm else self.message
-                msg += "〶 <b><u>Files List :</u></b>\n"
+                msg += "〄 <b><u>Files List :</u></b>\n"
                 fmsg = ""
                 for index, (link, name) in enumerate(files.items(), start=1):
                     chat_id, msg_id = link.split("/")[-2:]
