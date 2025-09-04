@@ -197,17 +197,17 @@ async def status_pages(_, query):
 
         msg = f"""〄 <b>Tᴀsᴋs Oᴠᴇʀᴠɪᴇᴡ</b> :
         
-┎ <b>Dᴏᴡɴʟᴏᴀᴅ:</b> {tasks["Download"]} | <b>Uᴘʟᴏᴀᴅ:</b> {tasks["Upload"]}
-┠ <b>Sᴇᴇᴅ:</b> {tasks["Seed"]} | <b>Aʀᴄʜɪᴠᴇ:</b> {tasks["Archive"]}
-┠ <b>Exᴛʀᴀᴄᴛ:</b> {tasks["Extract"]} | <b>Sᴘʟɪᴛ:</b> {tasks["Split"]}
-┠ <b>QᴜᴇᴜᴇDL:</b> {tasks["QueueDl"]} | <b>QᴜᴇᴜᴇUP:</b> {tasks["QueueUp"]}
-┠ <b>Cʟᴏɴᴇ:</b> {tasks["Clone"]} | <b>CʜᴇᴄᴋUᴘ:</b> {tasks["CheckUp"]}
-┠ <b>Pᴀᴜsᴇᴅ:</b> {tasks["Pause"]} | <b>SᴀᴍVɪᴅᴇᴏ:</b> {tasks["SamVid"]}
-┞ <b>Cᴏɴᴠᴇʀᴛ:</b> {tasks["ConvertMedia"]} | <b>FFᴍᴘᴇɢ:</b> {tasks["FFmpeg"]}
-│
-┟ <b>📥 DL Sᴘᴇᴇᴅ:</b> {get_readable_file_size(dl_speed)}/s
-┠ <b>📤 UL Sᴘᴇᴇᴅ:</b> {get_readable_file_size(up_speed)}/s
-┖ <b>🍃 Sᴇᴇᴅɪɴɢ Sᴘᴇᴇᴅ:</b> {get_readable_file_size(seed_speed)}/s
+╭ <b>Dᴏᴡɴʟᴏᴀᴅ:</b> {tasks["Download"]} | <b>Uᴘʟᴏᴀᴅ:</b> {tasks["Upload"]}
+┊ <b>Sᴇᴇᴅ:</b> {tasks["Seed"]} | <b>Aʀᴄʜɪᴠᴇ:</b> {tasks["Archive"]}
+┊ <b>Exᴛʀᴀᴄᴛ:</b> {tasks["Extract"]} | <b>Sᴘʟɪᴛ:</b> {tasks["Split"]}
+┊ <b>QᴜᴇᴜᴇDL:</b> {tasks["QueueDl"]} | <b>QᴜᴇᴜᴇUP:</b> {tasks["QueueUp"]}
+┊ <b>Cʟᴏɴᴇ:</b> {tasks["Clone"]} | <b>CʜᴇᴄᴋUᴘ:</b> {tasks["CheckUp"]}
+┊ <b>Pᴀᴜsᴇᴅ:</b> {tasks["Pause"]} | <b>SᴀᴍVɪᴅᴇᴏ:</b> {tasks["SamVid"]}
+╰ <b>Cᴏɴᴠᴇʀᴛ:</b> {tasks["ConvertMedia"]} | <b>FFᴍᴘᴇɢ:</b> {tasks["FFmpeg"]}
+
+╭ <b>📥 DL Sᴘᴇᴇᴅ:</b> {get_readable_file_size(dl_speed)}/s
+┊ <b>📤 UL Sᴘᴇᴇᴅ:</b> {get_readable_file_size(up_speed)}/s
+╰ <b>🍃 Sᴇᴇᴅɪɴɢ Sᴘᴇᴇᴅ:</b> {get_readable_file_size(seed_speed)}/s
 """
         button = ButtonMaker()
         button.data_button("⏪ Bᴀᴄᴋ", f"status {data[1]} ref")
