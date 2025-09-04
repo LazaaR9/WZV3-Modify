@@ -77,44 +77,44 @@ async def get_stats(event, key="home"):
         swap = swap_memory()
         memory = virtual_memory()
         disk_io = disk_io_counters()
-        msg = f"""⌬ <b><i>BOT STATISTICS 🧮 :</i></b>
-┖ <b>⏰ Bᴏᴛ Uᴘᴛɪᴍᴇ :</b> {get_readable_time(time() - bot_start_time)}
+        msg = f"""〄 <b><i>BOT STATISTICS 🧮 :</i></b>
+<b>⏰ Bᴏᴛ Uᴘᴛɪᴍᴇ :</b> {get_readable_time(time() - bot_start_time)}
 
-┎ <b><i>🎮 Rᴀᴍ ( Mᴇᴍᴏʀʏ ) :</i></b>
-┃ {get_progress_bar_string(memory.percent)} {memory.percent}%
-┖ <b>U :</b> {get_readable_file_size(memory.used)} | <b>F :</b> {get_readable_file_size(memory.available)} | <b>T :</b> {get_readable_file_size(memory.total)}
+╭ <b><i>🎮 Rᴀᴍ ( Mᴇᴍᴏʀʏ ) :</i></b>
+┊ {get_progress_bar_string(memory.percent)} {memory.percent}%
+╰ <b>U :</b> {get_readable_file_size(memory.used)} | <b>F :</b> {get_readable_file_size(memory.available)} | <b>T :</b> {get_readable_file_size(memory.total)}
 
-┎ <b><i>🍃 Sᴡᴀᴘ Mᴇᴍᴏʀʏ :</i></b>
-┃ {get_progress_bar_string(swap.percent)} {swap.percent}%
-┖ <b>U :</b> {get_readable_file_size(swap.used)} | <b>F :</b> {get_readable_file_size(swap.free)} | <b>T :</b> {get_readable_file_size(swap.total)}
+╭ <b><i>🍃 Sᴡᴀᴘ Mᴇᴍᴏʀʏ :</i></b>
+┊ {get_progress_bar_string(swap.percent)} {swap.percent}%
+╰ <b>U :</b> {get_readable_file_size(swap.used)} | <b>F :</b> {get_readable_file_size(swap.free)} | <b>T :</b> {get_readable_file_size(swap.total)}
 
-┎ <b><i>💾 Dɪsᴋ :</i></b>
-┃ {get_progress_bar_string(disk)} {disk}%
-┃ <b>Tᴏᴛᴀʟ Dɪsᴋ Rᴇᴀᴅ :</b> {f"{get_readable_file_size(disk_io.read_bytes)} ({get_readable_time(disk_io.read_time / 1000)})" if disk_io else "Access Denied"}
-┃ <b>Tᴏᴛᴀʟ Dɪsᴋ Wʀɪᴛᴇ :</b> {f"{get_readable_file_size(disk_io.write_bytes)} ({get_readable_time(disk_io.write_time / 1000)})" if disk_io else "Access Denied"}
-┖ <b>U :</b> {get_readable_file_size(used)} | <b>F :</b> {get_readable_file_size(free)} | <b>T :</b> {get_readable_file_size(total)}
+╭ <b><i>💾 Dɪsᴋ :</i></b>
+┊ {get_progress_bar_string(disk)} {disk}%
+┊ <b>Tᴏᴛᴀʟ Dɪsᴋ Rᴇᴀᴅ :</b> {f"{get_readable_file_size(disk_io.read_bytes)} ({get_readable_time(disk_io.read_time / 1000)})" if disk_io else "Access Denied"}
+┊ <b>Tᴏᴛᴀʟ Dɪsᴋ Wʀɪᴛᴇ :</b> {f"{get_readable_file_size(disk_io.write_bytes)} ({get_readable_time(disk_io.write_time / 1000)})" if disk_io else "Access Denied"}
+╰ <b>U :</b> {get_readable_file_size(used)} | <b>F :</b> {get_readable_file_size(free)} | <b>T :</b> {get_readable_file_size(total)}
 """
     elif key == "stsys":
         cpu_usage = cpu_percent(interval=0.5)
         msg = f"""<b><i>🧩 OS SYSTEM :</i></b>
-┟ <b>OS Uᴘᴛɪᴍᴇ :</b> {get_readable_time(time() - boot_time())}
-┠ <b>OS Vᴇʀsɪᴏɴ :</b> {version()}
-┖ <b>OS Aʀᴄʜ :</b> {platform()}
+╭ <b>OS Uᴘᴛɪᴍᴇ :</b> {get_readable_time(time() - boot_time())}
+┊ <b>OS Vᴇʀsɪᴏɴ :</b> {version()}
+╰ <b>OS Aʀᴄʜ :</b> {platform()}
 
 <b><i>🛰️ NETWORK STATISTICS :</i></b>
-┟ <b>🔺 Uᴘʟᴏᴀᴅ Dᴀᴛᴀ:</b> {get_readable_file_size(net_io_counters().bytes_sent)}
-┠ <b>🔻 Dᴏᴡɴʟᴏᴀᴅ Dᴀᴛᴀ:</b> {get_readable_file_size(net_io_counters().bytes_recv)}
-┠ <b>Pᴋᴛs Sᴇɴᴛ:</b> {str(net_io_counters().packets_sent)[:-3]}k
-┠ <b>Pᴋᴛs Rᴇᴄᴇɪᴠᴇᴅ:</b> {str(net_io_counters().packets_recv)[:-3]}k
-┖ <b>Tᴏᴛᴀʟ I/O Dᴀᴛᴀ:</b> {get_readable_file_size(net_io_counters().bytes_recv + net_io_counters().bytes_sent)}
+╭ <b>🔺 Uᴘʟᴏᴀᴅ Dᴀᴛᴀ:</b> {get_readable_file_size(net_io_counters().bytes_sent)}
+┊ <b>🔻 Dᴏᴡɴʟᴏᴀᴅ Dᴀᴛᴀ:</b> {get_readable_file_size(net_io_counters().bytes_recv)}
+┊ <b>Pᴋᴛs Sᴇɴᴛ:</b> {str(net_io_counters().packets_sent)[:-3]}k
+┊ <b>Pᴋᴛs Rᴇᴄᴇɪᴠᴇᴅ:</b> {str(net_io_counters().packets_recv)[:-3]}k
+╰ <b>Tᴏᴛᴀʟ I/O Dᴀᴛᴀ:</b> {get_readable_file_size(net_io_counters().bytes_recv + net_io_counters().bytes_sent)}
 
-┎ <b>🖥 CPU :</b>
-┃ {get_progress_bar_string(cpu_usage)} {cpu_usage}%
-┠ <b>CPU Fʀᴇǫᴜᴇɴᴄʏ :</b> {f"{cpu_freq().current / 1000:.2f} GHz" if cpu_freq() else "Access Denied"}
-┠ <b>Sʏsᴛᴇᴍ Aᴠɢ Lᴏᴀᴅ :</b> {"%, ".join(str(round((x / cpu_count() * 100), 2)) for x in getloadavg())}%, (1m, 5m, 15m)
-┠ <b>P-Cᴏʀᴇ(s) :</b> {cpu_count(logical=False)} | <b>V-Core(s) :</b> {cpu_count(logical=True) - cpu_count(logical=False)}
-┠ <b>Tᴏᴛᴀʟ Cᴏʀᴇ(s) :</b> {cpu_count(logical=True)}
-┖ <b>Usᴀʙʟᴇ CPU(s) :</b> {len(Process().cpu_affinity())}
+╭ <b>🖥 CPU :</b>
+┊ {get_progress_bar_string(cpu_usage)} {cpu_usage}%
+┊ <b>CPU Fʀᴇǫᴜᴇɴᴄʏ :</b> {f"{cpu_freq().current / 1000:.2f} GHz" if cpu_freq() else "Access Denied"}
+┊ <b>Sʏsᴛᴇᴍ Aᴠɢ Lᴏᴀᴅ :</b> {"%, ".join(str(round((x / cpu_count() * 100), 2)) for x in getloadavg())}%, (1m, 5m, 15m)
+┊ <b>P-Cᴏʀᴇ(s) :</b> {cpu_count(logical=False)} | <b>V-Core(s) :</b> {cpu_count(logical=True) - cpu_count(logical=False)}
+┊ <b>Tᴏᴛᴀʟ Cᴏʀᴇ(s) :</b> {cpu_count(logical=True)}
+╰ <b>Usᴀʙʟᴇ CPU(s) :</b> {len(Process().cpu_affinity())}
 """
     elif key == "strepo":
         last_commit, changelog = "No Data", "N/A"
@@ -138,10 +138,10 @@ async def get_stats(event, key="home"):
         )[0]
         msg = f"""<b><u>Repo Statistics 📊 :</u></b>
 
-┎ <b>Bᴏᴛ Uᴘᴅᴀᴛᴇᴅ :</b> {last_commit}
-┠ <b>Cᴜʀʀᴇɴᴛ Vᴇʀsɪᴏɴ :</b> {get_version()}
-┠ <b>Lᴀᴛᴇsᴛ Vᴇʀsɪᴏɴ :</b> {official_v}
-┖ <b>Lᴀsᴛ CʜᴀɴɢᴇLᴏɢ :</b> {changelog}
+╭ <b>Bᴏᴛ Uᴘᴅᴀᴛᴇᴅ :</b> {last_commit}
+┊ <b>Cᴜʀʀᴇɴᴛ Vᴇʀsɪᴏɴ :</b> {get_version()}
+┊ <b>Lᴀᴛᴇsᴛ Vᴇʀsɪᴏɴ :</b> {official_v}
+╰ <b>Lᴀsᴛ CʜᴀɴɢᴇLᴏɢ :</b> {changelog}
 
 <b>🧬 REMARKS :</b> <code>{compare_versions(get_version(), official_v)}</code>
     """
@@ -149,41 +149,41 @@ async def get_stats(event, key="home"):
     elif key == "stpkgs":
         msg = f"""<b><u>PACKAGES STATISTICS 📚 :</u></b>
 
-┎ <b>🐍 Pʏᴛʜᴏɴ:</b> <code>{bot_cache["eng_versions"]["python"]}</code>
-┠ <b>📶 Aʀɪᴀ𝟸:</b> <code>{bot_cache["eng_versions"]["aria2"]}</code>
-┠ <b>🦠 ǫBɪᴛ:</b> <code>{bot_cache["eng_versions"]["qBittorrent"]}</code>
-┠ <b>🗳️ SABnzbd+:</b> <code>{bot_cache["eng_versions"]["SABnzbd+"]}</code>
-┠ <b>🍻 RCʟᴏɴᴇ:</b> <code>{bot_cache["eng_versions"]["rclone"]}</code>
-┠ <b>⭐ ʏᴛ-ᴅʟᴘ:</b> <code>{bot_cache["eng_versions"]["yt-dlp"]}</code>
-┠ <b>🍿 FғMᴘᴇɢ:</b> <code>{bot_cache["eng_versions"]["ffmpeg"]}</code>
-┠ <b>🛠 ᴘ𝟽Zɪᴘ:</b> <code>{bot_cache["eng_versions"]["7z"]}</code>
-┠ <b>🌐 AɪᴏHᴛᴛᴘ:</b> <code>{bot_cache["eng_versions"]["aiohttp"]}</code>
-┠ <b>💥 PʏʀᴏFᴏʀᴋ:</b> <code>{bot_cache["eng_versions"]["pyrofork"]}</code>
-┠ <b>♻️ Gᴏᴏɢʟᴇ-Aᴘɪ:</b> <code>{bot_cache["eng_versions"]["gapi"]}</code>
-┖ <b>⭕️ MᴇɢᴀSᴅᴋ:</b> <code>{bot_cache["eng_versions"]["mega"]}</code>
+╭ <b>🐍 Pʏᴛʜᴏɴ:</b> <code>{bot_cache["eng_versions"]["python"]}</code>
+┊ <b>📶 Aʀɪᴀ𝟸:</b> <code>{bot_cache["eng_versions"]["aria2"]}</code>
+┊ <b>🦠 ǫBɪᴛ:</b> <code>{bot_cache["eng_versions"]["qBittorrent"]}</code>
+┊ <b>🗳️ SABnzbd+:</b> <code>{bot_cache["eng_versions"]["SABnzbd+"]}</code>
+┊ <b>🍻 RCʟᴏɴᴇ:</b> <code>{bot_cache["eng_versions"]["rclone"]}</code>
+┊ <b>⭐ ʏᴛ-ᴅʟᴘ:</b> <code>{bot_cache["eng_versions"]["yt-dlp"]}</code>
+┊ <b>🍿 FғMᴘᴇɢ:</b> <code>{bot_cache["eng_versions"]["ffmpeg"]}</code>
+┊ <b>🛠 ᴘ𝟽Zɪᴘ:</b> <code>{bot_cache["eng_versions"]["7z"]}</code>
+┊ <b>🌐 AɪᴏHᴛᴛᴘ:</b> <code>{bot_cache["eng_versions"]["aiohttp"]}</code>
+┊ <b>💥 PʏʀᴏFᴏʀᴋ:</b> <code>{bot_cache["eng_versions"]["pyrofork"]}</code>
+┊ <b>♻️ Gᴏᴏɢʟᴇ-Aᴘɪ:</b> <code>{bot_cache["eng_versions"]["gapi"]}</code>
+╰ <b>⭕️ MᴇɢᴀSᴅᴋ:</b> <code>{bot_cache["eng_versions"]["mega"]}</code>
 """
     elif key == "tlimits":
         msg = f"""<b><u>BOT LIMITATIONS 🚧 :</u></b>
         
-┎ <b>🎯 Dɪʀᴇᴄᴛ :</b> {Config.DIRECT_LIMIT or "∞"} GB
-┠ <b>🧲 Tᴏʀʀᴇɴᴛ :</b> {Config.TORRENT_LIMIT or "∞"} GB
-┠ <b>☁️ GDʀɪᴠᴇ :</b> {Config.GD_DL_LIMIT or "∞"} GB
-┠ <b>🧭 RCʟᴏɴᴇDL :</b> {Config.RC_DL_LIMIT or "∞"} GB
-┠ <b>🎗️ Cʟᴏɴᴇ :</b> {Config.CLONE_LIMIT or "∞"} GB
-┠ <b>🗿 JDᴏᴡɴ :</b> {Config.JD_LIMIT or "∞"} GB
-┠ <b>🗳️ NZB :</b> {Config.NZB_LIMIT or "∞"} GB
-┠ <b>📺 YT-DLP :</b> {Config.YTDLP_LIMIT or "∞"} GB
-┠ <b>🎥 Pʟᴀʏʟɪsᴛ :</b> {Config.PLAYLIST_LIMIT or "∞"}
-┠ <b>Ⓜ️ Mᴇɢᴀ :</b> {Config.MEGA_LIMIT or "∞"} GB
-┠ <b>📂 Lᴇᴇᴄʜ :</b> {Config.LEECH_LIMIT or "∞"} GB
-┠ <b>🔐 Aʀᴄʜɪᴠᴇ :</b> {Config.ARCHIVE_LIMIT or "∞"} GB
-┠ <b>📂 Exᴛʀᴀᴄᴛ :</b> {Config.EXTRACT_LIMIT or "∞"} GB
-┞ <b>📀 Tʜʀᴇsʜᴏʟᴅ Sᴛᴏʀᴀɢᴇ :</b> {Config.STORAGE_LIMIT or "∞"} GB
-│
-┟ <b>Tᴏᴋᴇɴ Vᴀʟɪᴅɪᴛʏ :</b> {Config.VERIFY_TIMEOUT or "Disabled"}
-┠ <b>Usᴇʀ Tɪᴍᴇ Lɪᴍɪᴛ :</b> {Config.USER_TIME_INTERVAL or "0"}s / task
-┠ <b>👤 Usᴇʀ Mᴀx Tᴀsᴋs :</b> {Config.USER_MAX_TASKS or "∞"}
-┖ <b>👾 Bᴏᴛ Mᴀx Tᴀsᴋs :</b> {Config.BOT_MAX_TASKS or "∞"}
+╭ <b>🎯 Dɪʀᴇᴄᴛ :</b> {Config.DIRECT_LIMIT or "∞"} GB
+┊ <b>🧲 Tᴏʀʀᴇɴᴛ :</b> {Config.TORRENT_LIMIT or "∞"} GB
+┊ <b>☁️ GDʀɪᴠᴇ :</b> {Config.GD_DL_LIMIT or "∞"} GB
+┊ <b>🧭 RCʟᴏɴᴇDL :</b> {Config.RC_DL_LIMIT or "∞"} GB
+┊ <b>🎗️ Cʟᴏɴᴇ :</b> {Config.CLONE_LIMIT or "∞"} GB
+┊ <b>🗿 JDᴏᴡɴ :</b> {Config.JD_LIMIT or "∞"} GB
+┊ <b>🗳️ NZB :</b> {Config.NZB_LIMIT or "∞"} GB
+┊ <b>📺 YT-DLP :</b> {Config.YTDLP_LIMIT or "∞"} GB
+┊ <b>🎥 Pʟᴀʏʟɪsᴛ :</b> {Config.PLAYLIST_LIMIT or "∞"}
+┊ <b>Ⓜ️ Mᴇɢᴀ :</b> {Config.MEGA_LIMIT or "∞"} GB
+┊ <b>📂 Lᴇᴇᴄʜ :</b> {Config.LEECH_LIMIT or "∞"} GB
+┊ <b>🔐 Aʀᴄʜɪᴠᴇ :</b> {Config.ARCHIVE_LIMIT or "∞"} GB
+┊ <b>📂 Exᴛʀᴀᴄᴛ :</b> {Config.EXTRACT_LIMIT or "∞"} GB
+╰ <b>📀 Tʜʀᴇsʜᴏʟᴅ Sᴛᴏʀᴀɢᴇ :</b> {Config.STORAGE_LIMIT or "∞"} GB
+
+╭ <b>Tᴏᴋᴇɴ Vᴀʟɪᴅɪᴛʏ :</b> {Config.VERIFY_TIMEOUT or "Disabled"}
+┊ <b>Usᴇʀ Tɪᴍᴇ Lɪᴍɪᴛ :</b> {Config.USER_TIME_INTERVAL or "0"}s / task
+┊ <b>👤 Usᴇʀ Mᴀx Tᴀsᴋs :</b> {Config.USER_MAX_TASKS or "∞"}
+╰ <b>👾 Bᴏᴛ Mᴀx Tᴀsᴋs :</b> {Config.BOT_MAX_TASKS or "∞"}
     """
 
     elif key == "systasks":
