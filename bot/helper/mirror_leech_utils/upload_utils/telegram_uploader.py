@@ -114,8 +114,8 @@ class TelegramUploader:
                 self._listener.message.link if self._listener.is_super_chat else ""
             )
             msg = f"""〄 <b><u>Leech Started :</u></b>
-┊
-┊ <b>User :</b> {self._listener.user.mention} ( #ID{self._listener.user_id} ){f"\n┠ <b>Message Link :</b> <a href='{msg_link}'>Click Here</a>" if msg_link else ""}
+╭ <b>User :</b> {self._listener.user.mention} [<code>{self._listener.user_id}</code>]
+┊ <b>Message Link :</b> <a href='{msg_link}'>Click Here</a>
 ╰ <b>Source :</b> <a href='{self._listener.source_url}'>Click Here</a>"""
             try:
                 self._log_msg = await TgClient.bot.send_message(
@@ -126,13 +126,38 @@ class TelegramUploader:
                     disable_notification=True,
                 )
                 self._sent_msg = self._log_msg
+				
+                # 🛠 Fix for user session not being in source chat
                 if self._user_session:
-                    self._sent_msg = await TgClient.user.get_messages(
-                        chat_id=self._sent_msg.chat.id,
-                        message_ids=self._sent_msg.id,
-                    )
+                    try:
+                        async for m in TgClient.user.get_chat_history(
+                            chat_id=self._log_msg.chat.id,
+                            limit=5
+                        ):
+                            if m.from_user and m.from_user.id == self._listener.user_id:
+                                self._sent_msg = m
+                                LOGGER.info("[Fallback] Using recent user message from log channel.")
+                                break
+                        else:
+                            # Send fallback message if none found
+                            self._sent_msg = await TgClient.user.send_message(
+                                chat_id=self._log_msg.chat.id,
+                                text="[Auto] Upload task started.",
+                                disable_web_page_preview=True,
+                                disable_notification=True,
+                            )
+                    except Exception as e:
+                        LOGGER.error(f"User session fallback failed: {e}")
+                        await self._listener.on_upload_error("User session: unable to prepare reply message.")
+                        return False
+
                 else:
                     self._is_private = self._sent_msg.chat.type.name == "PRIVATE"
+
+            except Exception as e:
+                await self._listener.on_upload_error(str(e))
+                return False
+
                 if self._listener.leech_dest:
                     try:
                         leech_dest = self._listener.leech_dest
